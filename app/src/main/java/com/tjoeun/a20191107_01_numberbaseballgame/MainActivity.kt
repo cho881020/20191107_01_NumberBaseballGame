@@ -16,6 +16,7 @@ class MainActivity : BaseActivity() {
     var chatAdapter:ChatAdapter? = null
 
     var questionNumArray = ArrayList<Int>()
+    var userInputNumArray = ArrayList<Int>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,6 +47,20 @@ class MainActivity : BaseActivity() {
 
     }
 
+    fun checkAnswer() {
+
+        for (num in userInputNumArray) {
+            Log.d("입력숫자", num.toString())
+        }
+
+//        for (i in 0..2) {
+//            for (j in 0..2) {
+//
+//            }
+//        }
+
+    }
+
     override fun setupEvents() {
 
         inputBtn.setOnClickListener {
@@ -54,7 +69,14 @@ class MainActivity : BaseActivity() {
 
             chatAdapter?.notifyDataSetChanged()
 
+            userInputNumArray.clear()
+            userInputNumArray.add(inputNum.toInt() / 100) // 맨 앞 숫자 추출
+            userInputNumArray.add(inputNum.toInt() / 10 % 10) // 가운데 숫자 추출
+            userInputNumArray.add(inputNum.toInt() % 10) // 맨 뒤 숫자 추출
+
             chatListView.smoothScrollToPosition(chatList.size - 1)
+
+            checkAnswer()
         }
 
     }
