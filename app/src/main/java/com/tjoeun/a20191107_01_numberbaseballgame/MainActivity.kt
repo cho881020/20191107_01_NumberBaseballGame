@@ -49,15 +49,23 @@ class MainActivity : BaseActivity() {
 
     fun checkAnswer() {
 
-        for (num in userInputNumArray) {
-            Log.d("입력숫자", num.toString())
-        }
+        var strikeCount = 0
+        var ballCount = 0
 
-//        for (i in 0..2) {
-//            for (j in 0..2) {
-//
-//            }
-//        }
+        for (i in 0..2) {
+            for (j in 0..2) {
+                if (userInputNumArray.get(i) == questionNumArray.get(j)) {
+                    if (i == j) {
+                        // strike 갯수 증가
+                        strikeCount++
+                    }
+                    else {
+                        // ball 갯수 증가
+                        ballCount++
+                    }
+                }
+            }
+        }
 
     }
 
