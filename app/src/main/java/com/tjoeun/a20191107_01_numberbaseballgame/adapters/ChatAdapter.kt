@@ -1,6 +1,7 @@
 package com.tjoeun.a20191107_01_numberbaseballgame.adapters
 
 import android.content.Context
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -29,6 +30,13 @@ class ChatAdapter(context:Context, res:Int, list:ArrayList<ChatData>)
         var data = mList.get(position)
 
         var contentTxt = row.findViewById<TextView>(R.id.contentTxt)
+
+        if (data.speaker == "CPU") {
+            contentTxt.gravity = Gravity.LEFT
+        }
+        else {
+            contentTxt.gravity = Gravity.RIGHT
+        }
 
         contentTxt.text = data.message
 
