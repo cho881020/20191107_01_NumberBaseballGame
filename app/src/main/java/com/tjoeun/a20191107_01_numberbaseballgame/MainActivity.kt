@@ -21,7 +21,7 @@ class MainActivity : BaseActivity() {
 
     fun createQuestion() {
         while (true) {
-            val number = Random.nextInt(1, 9)
+            val number = Random.nextInt(1, 10)
 
             if (!questionNumArray.contains(number)) {
                 questionNumArray.add(number)
