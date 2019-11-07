@@ -2,6 +2,7 @@ package com.tjoeun.a20191107_01_numberbaseballgame
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import com.tjoeun.a20191107_01_numberbaseballgame.adapters.ChatAdapter
 import com.tjoeun.a20191107_01_numberbaseballgame.datas.ChatData
@@ -67,15 +68,20 @@ class MainActivity : BaseActivity() {
             }
         }
 
-        chatList.add(ChatData("${strikeCount}S ${ballCount}B 입니다.", "CPU"))
 
-        if (strikeCount == 3) {
-            chatList.add(ChatData("축하합니다! 정답입니다.", "CPU"))
-        }
+        Handler().postDelayed({
 
-        chatAdapter?.notifyDataSetChanged()
+            chatList.add(ChatData("${strikeCount}S ${ballCount}B 입니다.", "CPU"))
 
-        chatListView.smoothScrollToPosition(chatList.size-1)
+            if (strikeCount == 3) {
+                chatList.add(ChatData("축하합니다! 정답입니다.", "CPU"))
+            }
+            chatAdapter?.notifyDataSetChanged()
+
+            chatListView.smoothScrollToPosition(chatList.size-1)
+        }, 500)
+
+
 
     }
 
